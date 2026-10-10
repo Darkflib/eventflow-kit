@@ -1,0 +1,33 @@
+[project]
+name = "eventflow-kit"
+description = "Signed CloudEvent envelopes, zone message policy, GitHub webhook normalisation and hub notifications"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.6.0"]
+
+[build-system]
+requires = ["hatchling>=1.21.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eventflow_kit"]
+
+[dependency-groups]
+dev = ["pytest>=8.2.0", "mypy>=1.8.0", "ruff>=0.4.0"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "W", "UP", "ASYNC"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
